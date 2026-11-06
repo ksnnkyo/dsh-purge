@@ -1,5 +1,7 @@
 # 镜像说明 / Mirror Notice
 
+> 本文件以下内容保留同步前的历史镜像说明。本分支同步了 [HunYiSage/dsh-purge PR #223](https://github.com/HunYiSage/dsh-purge/pull/223) 的 1.1.93 待合并代码；当前许可证和署名以本分支的 `LICENSE`、`NOTICE` 为准。
+
 本仓库是 **[YuJunZhiXue/dsh-purge](https://github.com/YuJunZhiXue/dsh-purge)** 的**全量镜像（mirror）**，
 由 [@mmparko](https://github.com/mmparko) 在上游宣布删库前完整备份，用于存档与分发。
 
