@@ -1,3 +1,33 @@
+# 1.1.93 — 2026-11-06
+
+## 中文
+
+- 版本 **1.1.93**。
+- **适配 DSH 0.2.2-rc.1**。宿主这一版动了执行与审批的主干：
+  - 工具执行器拆成 `dsh-tool-executor-native` / `dsh-tool-executor-ptc`，`run_code` 与 PTC SDK 从 `dsh-tools` 迁出。
+  - 审批服务新增 `session-projection` 依赖与 `approvalState` projection，`ASK_SENTENCE` 改为 `Approval prompts are enabled in this session: ...`。
+  - `dsh-base` 里 `fs-observation-policy` 默认 `disabled: true`，并新增 `applyPatch` 开关。
+  - sandbox 的 `workspace-write` 开始接受显式额外根目录。
+  - `agent-instructions` 改为用户全局链 / 项目链分别计预算。
+  - 新增 `apply_patch` 工具，默认关闭。
+- **修复 9 条漂移的补丁 pattern**：执行器拆分、`run_code` / PTC SDK 迁出、审批 projection、`fs-observation-policy` / `applyPatch` 开关、`workspace-write` 额外根目录、`agent-instructions` 预算链各自挪动了锚点，共 9 条 pattern 在 rc.1 上落空。本版按新宿主代码逐条重对齐，命中、注入、回滚整条链路在 0.2.2-rc.1 上走通。
+- **随宿主变化更新的补丁匹配**：**#14 / #17 / #54 / #60 / #62 / #67 / #74 / #82 / #40**。旧 pattern 一律保留、新 pattern 追加，不覆盖旧版；rc.5 / rc.2 分支照旧生效。
+- **兼容范围**：**0.2.2-rc.1**、**0.2.1-rc.5**、**0.2.1-rc.2** 同时在列。rc.5 与 rc.2 仍然可用，不用降宿主，也不用换插件版本。三份 README 的版本号与适配范围同步到 1.1.93，并删掉「不支持 0.2.1-rc.3 及更新」的旧表述。
+
+## English
+
+- **1.1.93**.
+- **DSH 0.2.2-rc.1 support.** This host release moved the execution and approval spine:
+  - The tool executor split into `dsh-tool-executor-native` / `dsh-tool-executor-ptc`, and `run_code` plus the PTC SDK moved out of `dsh-tools`.
+  - The approval service gained a `session-projection` dependency and an `approvalState` projection; `ASK_SENTENCE` is now `Approval prompts are enabled in this session: ...`.
+  - `fs-observation-policy` now defaults to `disabled: true` in `dsh-base`, which also gained an `applyPatch` switch.
+  - Sandbox `workspace-write` accepts explicit extra roots.
+  - `agent-instructions` now budgets the user-global chain and the project chain separately.
+  - New `apply_patch` tool, off by default.
+- **9 drifted patch patterns repaired**: the executor split, the `run_code` / PTC SDK move, the approval projection, `fs-observation-policy` / `applyPatch`, the extra `workspace-write` roots and the split `agent-instructions` budget each shifted anchors, so 9 patterns missed on rc.1. This release re-aligns every one of them against the new host code; match, inject and revert run end to end on 0.2.2-rc.1.
+- **Patch matches updated for the host change**: **#14 / #17 / #54 / #60 / #62 / #67 / #74 / #82 / #40**. Old patterns are kept and new ones appended, never overwritten; the rc.5 / rc.2 branches behave as before.
+- **Supported hosts**: **0.2.2-rc.1**, **0.2.1-rc.5** and **0.2.1-rc.2** all in the list. rc.5 and rc.2 keep working — no host downgrade, no plugin swap. All three READMEs move to 1.1.93 and drop the old "0.2.1-rc.3 and newer RCs are not supported" wording.
+
 # 1.1.92
 
 ## 中文
